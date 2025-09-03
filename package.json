@@ -1,0 +1,22 @@
+{
+  "name": "cli-note-manager-package",
+  "version": "1.0.0",
+  "description": "CLI Note Manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucascamourao/CLI-Note-Manager.git"
+  },
+  "author": "Lucas Cabral Amador Mourão",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucascamourao/CLI-Note-Manager/issues"
+  },
+  "homepage": "https://github.com/lucascamourao/CLI-Note-Manager#readme",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
