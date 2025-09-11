@@ -44,11 +44,16 @@ yargs.command({
         id: {
             describe: 'Note ID',
             demandOption: true,
-            type: 'string'
+            type: 'number'
         }
     },
     handler(argv) {
-        notesModule.readNote(argv.id);
+        const noteId = Number(argv.id);
+        if (isNaN(noteId)) {
+            console.log('Invalid note ID');
+            return;
+        }
+        notesModule.readNote(noteId);
     }
 });
 
@@ -63,7 +68,12 @@ yargs.command({
         }
     },
     handler(argv) {
-        notesModule.update(argv.id);
+        const noteId = Number(argv.id);
+        if (isNaN(noteId)) {
+            console.log('Invalid note ID');
+            return;
+        }
+        notesModule.updateNote(noteId);
     }
 });
 
@@ -78,7 +88,12 @@ yargs.command({
         }
     },
     handler(argv) {
-        notesModule.removeNote(argv.id);
+        const noteId = Number(argv.id);
+        if (isNaN(noteId)) {
+            console.log('Invalid note ID');
+            return;
+        }
+        notesModule.removeNote(noteId);
     }
 });
 

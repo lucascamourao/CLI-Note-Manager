@@ -2,30 +2,81 @@
 // The only file to interact with notes.json
 
 const fs = require('fs');
-const notesJSON = fs.readFileSync('notes.json', 'utf8');
 
 function addNote(title, body) {
+    let notes = [];
+
+    // Se já existe o arquivo, lê as notas
+    if (fs.existsSync('notes.json')) {
+      const notesJSON = fs.readFileSync('notes.json', 'utf8');
+      try {
+        notes = notesJSON.trim() === "" ? [] : JSON.parse(notesJSON); // se for vazio, pega uma lista vazia
+
+      } catch (e) {
+        console.error('Erro ao fazer parsing do JSON existente:', e);
+      }
+    } 
+
     const newNote = {
-      "id": 1,
-      "title": title,
-      "body": body,
-      "createdAt": "2025-08-21T22:50:15.000-03:00"
-    }
+      id: String(notes.length + 1),
+      title: title,
+      body: body,
+      createdAt: new Date().toISOString()
+    };
 
-    const newNoteJSON = JSON.stringify(newNote, null, 2);
+    notes.push(newNote); // puts the new note into the list
 
-    fs.writeFileSync(newNoteJSON, notesJSON);
+    const newNotes = JSON.stringify(notes, null, 2);
+
+    fs.writeFileSync('notes.json', newNotes); // se o JSON não existir, aqui é criado normalmente
 
     console.log("Note {title} added successfully!")
     console.log('Content: ', newNote);
 }
 
 function listNotes() {
-    console.log("Listing notes...");
+  let notes = [];
+
+  console.log("Listing notes...");
+
+  if (fs.existsSync('notes.json')) {
+    const notesJSON = fs.readFileSync('notes.json', 'utf8');
+    try {
+      notes = notesJSON.trim() === "" ? [] : JSON.parse(notesJSON); // se for vazio, pega uma lista vazia
+
+    } catch (e) {
+      console.error('Erro ao fazer parsing do JSON existente:', e);
+    }
+  }
+
+  console.log(notes);
 }
 
 function readNote(id) {
-    console.log(`Reading note: ${id}`)
+  let notes = [];
+
+  console.log(`Reading note: ${id}`);
+
+  if (fs.existsSync('notes.json')) {
+    const notesJSON = fs.readFileSync('notes.json', 'utf8');
+    try {
+      notes = notesJSON.trim() === "" ? [] : JSON.parse(notesJSON); // se for vazio, pega uma lista vazia
+
+    } catch (e) {
+      console.error('Erro ao fazer parsing do JSON existente:', e);
+    }
+  }
+
+  console.log(notes);
+
+  while (i < length(notes)) {
+    if (String(notes[i].id) == String(id)){
+      console.log(notes[i]);
+      break;
+    }
+    console.log("oi");
+    i++;
+  }
 }
 
 function updateNote(id) {
