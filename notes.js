@@ -2,6 +2,7 @@
 // The only file to interact with notes.json
 
 const fs = require('fs');
+const { title } = require('process');
 
 function addNote(title, body) {
     let notes = [];
@@ -55,8 +56,6 @@ function listNotes() {
 function readNote(id) {
   let notes = [];
 
-  console.log(`Reading note: ${id}`);
-
   if (fs.existsSync('notes.json')) {
     const notesJSON = fs.readFileSync('notes.json', 'utf8');
     try {
@@ -77,11 +76,64 @@ function readNote(id) {
 }
 
 function updateNote(id) {
-    console.log(`Updating note: ${id}`)
+  console.log(`Updating note: ${id}`)
+
+  let notes = [];
+
+  if (fs.existsSync('notes.json')) {
+    const notesJSON = fs.readFileSync('notes.json', 'utf8');
+  try {
+    notes = notesJSON.trim() === "" ? [] : JSON.parse(notesJSON); // se for vazio, pega uma lista vazia
+
+  } catch (e) {
+    console.error('Erro ao fazer parsing do JSON existente:', e);
+    }
+  }
+
+  const note = notes.find(n => Number(n.id) === Number(id));
+
+  if (note) {
+    note.title = title;
+    note.body = body;
+  } else {
+    console.log(`Couldn't find note with id ${id}`);
+  }
+
 }
 
 function removeNote(id) {
-    console.log(`Removing note ${id}`)
+  console.log(`Removing note ${id}`)
+
+  let notes = [];
+
+  if (fs.existsSync('notes.json')) {
+    const notesJSON = fs.readFileSync('notes.json', 'utf8');
+  try {
+    notes = notesJSON.trim() === "" ? [] : JSON.parse(notesJSON); // se for vazio, pega uma lista vazia
+
+  } catch (e) {
+    console.error('Erro ao fazer parsing do JSON existente:', e);
+    }
+  }
+
+  const note = notes.find(n => Number(n.id) === Number(id));
+
+  if (note) {
+    for (let n_id = 0; n_id < notes.length; n_id++) {
+      if (notes[n_id].id === id){
+        let deletedNote = notes.splice(n_id, 1);
+
+        console.log('Note removed successfully!');
+        console.log('Content: ', deletedNote);
+      }
+    }
+  } else {
+    console.log(`Couldn't find note with id ${n_id}`);
+  }
+
+  const newNotes = JSON.stringify(notes, null, 2);
+
+  fs.writeFileSync('notes.json', newNotes); // se o JSON não existir, aqui é criado normalmente
 }
 
 module.exports = {

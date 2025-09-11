@@ -63,6 +63,16 @@ yargs.command({
         id: {
             describe: 'Note ID',
             demandOption: true,
+            type: 'number'
+        },
+        title: {
+            describe: 'Note title',
+            demandOption: false,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note body',
+            demandOption: false,
             type: 'string'
         }
     },
@@ -72,7 +82,7 @@ yargs.command({
             console.log('Invalid note ID');
             return;
         }
-        notesModule.updateNote(noteId);
+        notesModule.updateNote(noteId, argv.title, argv.body);
     }
 });
 
