@@ -1,38 +1,26 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "title": "Shopping List",
     "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T02:45:18.357Z"
+    "createdAt": "2025-09-11T03:10:31.731Z"
   },
   {
-    "id": "2",
+    "id": 2,
     "title": "Shopping List",
     "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T02:48:54.183Z"
+    "createdAt": "2025-09-11T03:10:32.382Z"
   },
   {
-    "id": "3",
+    "id": 3,
     "title": "Shopping List",
     "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T02:48:54.822Z"
+    "createdAt": "2025-09-11T03:10:32.932Z"
   },
   {
-    "id": "4",
+    "id": 4,
     "title": "Shopping List",
     "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T02:48:55.288Z"
-  },
-  {
-    "id": "5",
-    "title": "Shopping List",
-    "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T02:48:55.787Z"
-  },
-  {
-    "id": "6",
-    "title": "Shopping List",
-    "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T02:56:49.143Z"
+    "createdAt": "2025-09-11T03:10:33.484Z"
   }
 ]

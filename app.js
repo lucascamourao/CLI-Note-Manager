@@ -48,12 +48,11 @@ yargs.command({
         }
     },
     handler(argv) {
-        const noteId = Number(argv.id);
-        if (isNaN(noteId)) {
+        if (isNaN(argv.id)) {
             console.log('Invalid note ID');
             return;
         }
-        notesModule.readNote(noteId);
+        notesModule.readNote(argv.id);
     }
 });
 
@@ -96,6 +95,5 @@ yargs.command({
         notesModule.removeNote(noteId);
     }
 });
-
 
 yargs.parse();
