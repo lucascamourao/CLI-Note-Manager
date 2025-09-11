@@ -18,8 +18,15 @@ function addNote(title, body) {
       }
     } 
 
+    // Copies the original list of notes and pops (removes and returns) the last element
+    let notesAux = [...notes] // spread operator
+    currLastElement = notesAux.pop();
+    currId = currLastElement.id;
+
+    // Making sure the ids are UNIQUE
+
     const newNote = {
-      id: notes.length + 1,
+      id: currId + 1,
       title: title,
       body: body,
       createdAt: new Date().toISOString()
@@ -75,7 +82,7 @@ function readNote(id) {
   }
 }
 
-function updateNote(id) {
+function updateNote(id, title, body) {
   console.log(`Updating note: ${id}`)
 
   let notes = [];
@@ -92,9 +99,23 @@ function updateNote(id) {
 
   const note = notes.find(n => Number(n.id) === Number(id));
 
+  // Checks if the following (optional) arguments have been passed
   if (note) {
-    note.title = title;
-    note.body = body;
+    if (typeof(title) != 'undefined') {
+      note.title = title;
+    }
+
+    if (typeof(body) != 'undefined'){
+      note.body = body;
+    }
+
+    console.log(`Note has been updated!`);
+    console.log(note);
+
+    const newNotes = JSON.stringify(notes, null, 2);
+
+    fs.writeFileSync('notes.json', newNotes); 
+
   } else {
     console.log(`Couldn't find note with id ${id}`);
   }
