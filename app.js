@@ -2,7 +2,6 @@
 // Utilise yargs package for defining and reading commands
 // Call functions from notes.js
 
-const fs = require('fs');
 const yargs = require('yargs')
 const notesModule = require('./notes.js');
 
@@ -44,10 +43,14 @@ yargs.command({
         id: {
             describe: 'Note ID',
             demandOption: true,
-            type: 'string'
+            type: 'number'
         }
     },
     handler(argv) {
+        if (isNaN(argv.id)) {
+            console.log('Invalid note ID');
+            return;
+        }
         notesModule.readNote(argv.id);
     }
 });
@@ -59,11 +62,26 @@ yargs.command({
         id: {
             describe: 'Note ID',
             demandOption: true,
+            type: 'number'
+        },
+        title: {
+            describe: 'Note title',
+            demandOption: false,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note body',
+            demandOption: false,
             type: 'string'
         }
     },
     handler(argv) {
-        notesModule.update(argv.id);
+        const noteId = Number(argv.id);
+        if (isNaN(noteId)) {
+            console.log('Invalid note ID');
+            return;
+        }
+        notesModule.updateNote(noteId, argv.title, argv.body);
     }
 });
 
@@ -78,9 +96,13 @@ yargs.command({
         }
     },
     handler(argv) {
-        notesModule.removeNote(argv.id);
+        const noteId = Number(argv.id);
+        if (isNaN(noteId)) {
+            console.log('Invalid note ID');
+            return;
+        }
+        notesModule.removeNote(noteId);
     }
 });
-
 
 yargs.parse();

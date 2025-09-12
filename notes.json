@@ -1,8 +1,20 @@
 [
   {
-      "id": 1,
-      "title": "Reunião de Alinhamento",
-      "body": "Discutir os próximos passos do projeto.",
-      "createdAt": "2025-08-21T22:50:15.000-03:00"
+    "id": 1,
+    "title": "First Note",
+    "body": "This is the first note.",
+    "createdAt": "12/09/2025, 14:59:00"
+  },
+  {
+    "id": 1,
+    "title": "Second Note",
+    "body": "This is the second note.",
+    "createdAt": "12/09/2025, 14:59:04"
+  },
+  {
+    "id": 1,
+    "title": "Test Note",
+    "body": "Just testing note creation.",
+    "createdAt": "12/09/2025, 14:59:07"
   }
 ]
