@@ -2,7 +2,6 @@
 // Utilise yargs package for defining and reading commands
 // Call functions from notes.js
 
-const fs = require('fs');
 const yargs = require('yargs')
 const notesModule = require('./notes.js');
 

@@ -1,32 +1,20 @@
 [
   {
     "id": 1,
-    "title": "Teste",
-    "body": "Testee",
-    "createdAt": "2025-09-11T19:34:31.759Z"
+    "title": "First Note",
+    "body": "This is the first note.",
+    "createdAt": "12/09/2025, 14:59:00"
   },
   {
-    "id": 2,
-    "title": "Shopping List",
-    "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T19:34:32.717Z"
+    "id": 1,
+    "title": "Second Note",
+    "body": "This is the second note.",
+    "createdAt": "12/09/2025, 14:59:04"
   },
   {
-    "id": 6,
-    "title": "Shopping List",
-    "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T19:34:34.741Z"
-  },
-  {
-    "id": 10,
-    "title": "Shopping List",
-    "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T19:48:09.152Z"
-  },
-  {
-    "id": 11,
-    "title": "Shopping List",
-    "body": "Milk, Bread, Eggs",
-    "createdAt": "2025-09-11T19:48:22.718Z"
+    "id": 1,
+    "title": "Test Note",
+    "body": "Just testing note creation.",
+    "createdAt": "12/09/2025, 14:59:07"
   }
 ]
