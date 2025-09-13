@@ -2,6 +2,7 @@
 // The only file to interact with notes.json
 
 const fs = require('fs');
+const { DateTime } = require("luxon");
 
 // Auxiliary function for loading the notes from the JSON file
 function loadNotes() {
@@ -24,9 +25,14 @@ function addNote(title, body) {
 
   // Copies the original list of notes and pops (removes and returns) the last element
   let notesAux = [...notes]; // spread operator
+
+  if (notes.some(n => n.title === title)) {
+    console.log('Error: A note with this title already exists.');
+    return;
+  }
   
   let currId = 0;
-  if (notesAux > 0) {
+  if (notesAux.length > 0) {
     let currLastElement = notesAux.pop();
     currId = currLastElement.id;
   } 
@@ -36,7 +42,7 @@ function addNote(title, body) {
     id: currId + 1,
     title: title,
     body: body,
-    createdAt: new Date().toLocaleString('pt-BR')
+    createdAt: DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss")
   };
 
   notes.push(newNote); // puts the new note into the list
@@ -54,7 +60,14 @@ function listNotes() {
 
   if (notes.length > 0) {
     console.log("Listing notes...");
-    console.log(notes);
+
+    notes.forEach(note => {
+      console.log(`ID: ${note.id}`);
+      console.log(`Title: ${note.title}`);
+      console.log(`Body: ${note.body}`);
+      console.log(`Created At: ${note.createdAt}`);
+      console.log('---');
+    });
   } else {
     console.log('There are no notes registered.');
   }
@@ -67,7 +80,12 @@ function readNote(id) {
 
   if (note) {
     console.log('Reading note...');
-    console.log(note);
+
+    console.log(`ID: ${note.id}`);
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+    console.log(`Created At: ${note.createdAt}`);
+    console.log('---');
   } else {
     console.log(`Couldn't find note with id ${id}`);
   }
@@ -83,6 +101,10 @@ function updateNote(id, title, body) {
   // Checks if the following (optional) arguments have been passed
   if (note) {
     if (typeof(title) != 'undefined') {
+      if (notes.some(n => n.title === title && n.id !== note.id)) {
+        console.log('Error: A note with this title already exists.');
+        return;
+      }
       note.title = title;
     }
 

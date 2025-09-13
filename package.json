@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lucascamourao/CLI-Note-Manager#readme",
   "dependencies": {
+    "luxon": "^3.7.2",
     "yargs": "^17.7.2"
   }
 }
