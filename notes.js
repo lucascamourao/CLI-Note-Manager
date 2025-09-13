@@ -26,7 +26,7 @@ function addNote(title, body) {
   // Copies the original list of notes and pops (removes and returns) the last element
   let notesAux = [...notes]; // spread operator
 
-  if (notes.some(n => n.title === title)) {
+  if (notes.some(n => n.title.toLowerCase() === title.toLowerCase())) {
     console.log('Error: A note with this title already exists.');
     return;
   }
@@ -92,6 +92,11 @@ function readNote(id) {
 }
 
 function updateNote(id, title, body) {
+  if (typeof title === 'undefined' && typeof body === 'undefined') {
+    console.log('Error: You must provide at least a new title or a new body.');
+    return;
+  }
+
   console.log(`Updating note: ${id}`)
 
   let notes = loadNotes(); 
@@ -101,7 +106,7 @@ function updateNote(id, title, body) {
   // Checks if the following (optional) arguments have been passed
   if (note) {
     if (typeof(title) != 'undefined') {
-      if (notes.some(n => n.title === title && n.id !== note.id)) {
+      if (notes.some(n => n.title.toLowerCase() === title.toLowerCase() && n.id !== note.id)) {
         console.log('Error: A note with this title already exists.');
         return;
       }
