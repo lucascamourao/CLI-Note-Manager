@@ -3,18 +3,18 @@
     "id": 1,
     "title": "First Note",
     "body": "This is the first note.",
-    "createdAt": "12/09/2025, 14:59:00"
+    "createdAt": "13/09/2025 16:33:23"
   },
   {
-    "id": 1,
+    "id": 2,
     "title": "Second Note",
-    "body": "This is the second note.",
-    "createdAt": "12/09/2025, 14:59:04"
+    "body": "This is a note.",
+    "createdAt": "13/09/2025 16:33:40"
   },
   {
-    "id": 1,
-    "title": "Test Note",
-    "body": "Just testing note creation.",
-    "createdAt": "12/09/2025, 14:59:07"
+    "id": 3,
+    "title": "Third Note",
+    "body": "This is a note.",
+    "createdAt": "13/09/2025 16:33:47"
   }
 ]
